@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Image Accessibility Helper",
+    "version": "1.0",
+    "description": "Analyze and speak details of product images on e-commerce pages.",
+    "permissions": ["activeTab", "scripting", "storage", "tabs"],
+    "host_permissions": ["*://*/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*.amazon.com/*", "https://*.walmart.com/*"],
+        "js": ["content.js","popup.js","background.js"],
+        "run_at": "document_idle"
+      }
+    ]
+  }
+  
